@@ -80,6 +80,7 @@ A user [session](/session), as created by [login](/login).
     CouchDB.prepareUserDoc({name: "username", roles: ["customrole"]}, "secretpassword")
   
     
+    
 # Server
 
 ## .allDbs()
@@ -123,15 +124,51 @@ With the create_target option, the target db gets created if it doesn't already 
     CouchDB.replicate(http://localhost:5984/test_db, http://localhost:5984/test_db2, {"body" : {"create_target":true}})
 
 
+## .newXhr()
+
+### CouchDB.newXhr()
+
+### Description
+Returns an XMLHTTPRequest or an ActiveXObject, depending on the OS. If no XMLHTTPRequest support is detected, an error is thrown.
+
+### Returns
+A new XMLHTTPRequest or nothing.
+
+
+## .request()
+
+### CouchDB.request(method, uri, options)
+
+### Description
+Creates a [new XMLHTTPRequest](/newXhr). If the URI parameter doesn't start with "http://", the URI is prefixed with the CouchDB urlPrefix. If there are headers given in the options hash, they are set via setRequestHeader. The request is sent with the specified method. 
+
+### Results
+The XMLHTTPRequest has been sent with the given parameters.
+
+### Returns
+A new XMLHTTPRequest with readyState 4.
+
+### Example
+    CouchDB.request("GET", "/", {"headers": {"X-Couch-Full-Commit":"true"}});
 
 
 
-# Database
 
+## .requestStats()
 
+### CouchDB.requestStats(module, key, test)
 
+### Description
+Does a GET on "/_stats/module/key".
 
-# Documents
+### Returns
+Statistics about the specified module and key.
+
+### Example
+This returns the number of open databases:
+    CouchDB.requestStats('couchdb', 'open_databases', test);
+When the last argument is not null, "?flush=true" is appended to the request.
+
 
 
 
