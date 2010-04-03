@@ -20,16 +20,16 @@ You can "signup" like this:
 
 ### .login("username", "secretpassword")
 
-### Description:
+### Description
 Does a POST on "_session" with the user details.
 
 ### Results
 A created [session] (/session) with the user name and roles.
 
-### Returns:
-    {"ok": true, "name": "username", "roles": ["president"]}
+### Returns
+    {"ok": true, "name": "username", "roles": ["customrole"]}
 
-### Prerequisites:
+### Prerequisites
 A user doc [prepareUserDoc] (/prepareUserDoc), saved in an [authentication db] (/security-intro).
 
 
@@ -37,16 +37,16 @@ A user doc [prepareUserDoc] (/prepareUserDoc), saved in an [authentication db] (
 
 ### .logout()
 
-### Description:
+### Description
 Does a DELETE on "_session".
 
 ### Results
 The [session's] (/session) user name is set to null and the custom role is removed from the roles array.
 
-### Returns:
+### Returns
     {"ok": true}
 
-### Prerequisites:
+### Prerequisites
 A user [session] (/session), as created by [login] (/login).
 
 
@@ -54,17 +54,36 @@ A user [session] (/session), as created by [login] (/login).
 
 ### .session(options)
 
-### Description:
+### Description
 Does a GET on "_session". 
 
-### Returns:
+### Returns
     {"ok": true, "userCtx": {"name": "username", "roles": ["customrole"]}, "info": {"authentication_db": "_users", "authentication_handlers": ["oauth", "cookie", "default"], "authenticated": "cookie"}}
 
-### Prerequisites:
+### Prerequisites
 A user [session] (/session), as created by [login] (/login).
 
 
+## .prepareUserDoc()
 
+### .prepareUserDoc(userDoc, "secretpassword")
+
+### Description
+* Hashes the password 
+* Adds an empty roles array to the userDoc when not specified
+* Adds an _id, composed of user_prefix and name, to the userDoc when not specified
+
+### Returns
+    {"name": "username", "roles": ["customrole"], "_id": "org.couchdb.user:customrole", "salt":"a salt", "password_sha": "hashed password", "type":"user"}
+    
+### Example
+    CouchDB.prepareUserDoc({name: "username", roles: ["customrole"]}, "secretpassword")
+  
+    
+    
+    
+    
+    
 # Server
 
 
