@@ -176,7 +176,8 @@ When the last argument is not null, "?flush=true" is appended to the request.
 ### CouchDB.newUuids(amount, buffer)
 
 ### Description
-
+  
+  
 ### Returns
 
 ### Results
@@ -191,7 +192,14 @@ When the last argument is not null, "?flush=true" is appended to the request.
 ### CouchDB.maybeThrowError(request)
 
 ### Description
+Throws an error when the given request has a status greater than 400. 
 
+### Example
+    var req = CouchDB.request("GET", "/nonexisting_db")
+results in a 404 error, so 
+    CouchDB.maybeThrowError(req)
+returns
+    {"error": "not_found", "reason": "no_db_file"}
 
 
 ## .params()
