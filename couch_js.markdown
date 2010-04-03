@@ -18,7 +18,7 @@ You can "signup" like this:
 
 ## .login()
 
-### .login("username", "secretpassword")
+### CouchDB.login("username", "secretpassword")
 
 ### Description
 Does a POST on "_session" with the user details.
@@ -35,7 +35,7 @@ A user doc [prepareUserDoc] (/prepareUserDoc), saved in an [authentication db] (
 
 ## .logout()
 
-### .logout()
+### CouchDB.logout()
 
 ### Description
 Does a DELETE on "_session".
@@ -52,7 +52,7 @@ A user [session] (/session), as created by [login] (/login).
 
 ## .session()
 
-### .session(options)
+### CouchDB.session(options)
 
 ### Description
 Does a GET on "_session". 
@@ -66,7 +66,7 @@ A user [session] (/session), as created by [login] (/login).
 
 ## .prepareUserDoc()
 
-### .prepareUserDoc(userDoc, "secretpassword")
+### CouchDB.prepareUserDoc(userDoc, "secretpassword")
 
 ### Description
 * Hashes the password 
@@ -80,11 +80,18 @@ A user [session] (/session), as created by [login] (/login).
     CouchDB.prepareUserDoc({name: "username", roles: ["customrole"]}, "secretpassword")
   
     
-    
-    
-    
-    
 # Server
+
+## .allDbs()
+
+### CouchDB.allDbs(options)
+
+### Description
+Does a GET on "_all_dbs". 
+
+### Returns
+An array with all the databases.
+
 
 
 # Database
@@ -94,4 +101,18 @@ A user [session] (/session), as created by [login] (/login).
 
 
 # Design Docs
+
+## .allDesignDocs()
+
+### CouchDB.allDesignDocs()
+
+### Description
+Goes through [all dbs] (/allDbs) and returns all [design docs] (/designDocs) for each db.
+
+### Returns
+An array with all dbs, for each db the id and revision of every design document.
+
+### Example
+When there is one database "test_db" and one design document "mydesign", the result is this:
+    {"test_db": {"total_rows": 1, "offset": 0, "rows": [{"id": "_design/spec_db", "key": "_design/mydesign", "value": {"rev": "1-3885802b8f5804e8f03cda99df8e6cc7"}}]}}
 
