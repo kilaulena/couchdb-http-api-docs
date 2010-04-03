@@ -24,13 +24,13 @@ You can "signup" like this:
 Does a POST on "_session" with the user details.
 
 ### Results
-A created [session] (/session) with the user name and roles.
+A created [session](/session) with the user name and roles.
 
 ### Returns
     {"ok": true, "name": "username", "roles": ["customrole"]}
 
 ### Prerequisites
-A user doc [prepareUserDoc] (/prepareUserDoc), saved in an [authentication db] (/security-intro).
+A user doc [prepareUserDoc](/prepareUserDoc), saved in an [authentication db](/security-intro).
 
 
 ## .logout()
@@ -41,13 +41,13 @@ A user doc [prepareUserDoc] (/prepareUserDoc), saved in an [authentication db] (
 Does a DELETE on "_session".
 
 ### Results
-The [session's] (/session) user name is set to null and the custom role is removed from the roles array.
+The [session's](/session) user name is set to null and the custom role is removed from the roles array.
 
 ### Returns
     {"ok": true}
 
 ### Prerequisites
-A user [session] (/session), as created by [login] (/login).
+A user [session](/session), as created by [login](/login).
 
 
 ## .session()
@@ -61,7 +61,7 @@ Does a GET on "_session".
     {"ok": true, "userCtx": {"name": "username", "roles": ["customrole"]}, "info": {"authentication_db": "_users", "authentication_handlers": ["oauth", "cookie", "default"], "authenticated": "cookie"}}
 
 ### Prerequisites
-A user [session] (/session), as created by [login] (/login).
+A user [session](/session), as created by [login](/login).
 
 
 ## .prepareUserDoc()
@@ -84,7 +84,7 @@ A user [session] (/session), as created by [login] (/login).
 
 ## .allDbs()
 
-### CouchDB.allDbs(options)
+### CouchDB.allDbs()
 
 ### Description
 Does a GET on "_all_dbs". 
@@ -93,11 +93,48 @@ Does a GET on "_all_dbs".
 An array with all the databases.
 
 
+## .getVersion()
+
+### CouchDB.getVersion()
+
+### Description
+Does a GET on "/". 
+
+### Returns
+The version of the CouchDB installation.
+
+
+
+## .replicate()
+
+### CouchDB.replicate(source, target, replication_options)
+
+### Description
+Replicates the content of the source db to the target db. 
+  
+### Results
+The target db contains all the documents from the source db.  
+
+### Returns
+    {"ok": true, "session_id": "a session id", "source_last_seq": 1, "history": [{"session_id": "a session id", "start_time": "start time", "end_time": "end time", "start_last_seq": 0, "end_last_seq": 1, "recorded_seq": 1, "missing_checked": 0, "missing_found": 1, "docs_read": 1, "docs_written": 1, "doc_write_failures": 0}]}
+    
+### Example
+With the create_target option, the target db gets created if it doesn't already exist:
+    CouchDB.replicate(http://localhost:5984/test_db, http://localhost:5984/test_db2, {"body" : {"create_target":true}})
+
+
+
+
 
 # Database
 
 
+
+
 # Documents
+
+
+
 
 
 # Design Docs
@@ -107,7 +144,7 @@ An array with all the databases.
 ### CouchDB.allDesignDocs()
 
 ### Description
-Goes through [all dbs] (/allDbs) and returns all [design docs] (/designDocs) for each db.
+Goes through [all dbs](/allDbs) and returns all [design docs](/designDocs) for each db.
 
 ### Returns
 An array with all dbs, for each db the id and revision of every design document.
