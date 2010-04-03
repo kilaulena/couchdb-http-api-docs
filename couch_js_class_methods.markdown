@@ -171,6 +171,44 @@ When the last argument is not null, "?flush=true" is appended to the request.
 
 
 
+## .newUuids()
+
+### CouchDB.newUuids(amount, buffer)
+
+### Description
+
+### Returns
+
+### Results
+
+### Example
+
+
+
+
+## .maybeThrowError()
+
+### CouchDB.maybeThrowError(request)
+
+### Description
+
+
+
+## .params()
+
+### CouchDB.params(options)
+
+### Description
+Turns a json object into a http params string.
+
+### Returns
+A string with the keys and values separated by "=" and "&" or an empty string when the options are empty.
+
+### Example
+    CouchDB.params({"key":"value", "key2":"value2"})
+returns
+    "key=value&key2=value2"
+
 
 
 
