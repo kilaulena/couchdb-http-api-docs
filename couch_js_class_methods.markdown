@@ -105,7 +105,6 @@ Does a GET on "/".
 The version of the CouchDB installation.
 
 
-
 ## .replicate()
 
 ### CouchDB.replicate(source, target, replication_options)
@@ -152,8 +151,6 @@ A new XMLHTTPRequest with readyState 4.
     CouchDB.request("GET", "/", {"headers": {"X-Couch-Full-Commit":"true"}});
 
 
-
-
 ## .requestStats()
 
 ### CouchDB.requestStats(module, key, test)
@@ -170,21 +167,21 @@ This returns the number of open databases:
 When the last argument is not null, "?flush=true" is appended to the request.
 
 
-
 ## .newUuids()
 
 ### CouchDB.newUuids(amount, buffer)
 
 ### Description
-  
+The CouchDB.uuids_cache is filled with as many UUIDs as specified in the buffer parameter, or with 100. The next time newUuids is called, they aren't requested from CouchDB, but taken directly from this cache, when the cache contains enough of them. 
   
 ### Returns
-
-### Results
+An array with the specified amount of UUIDs.
 
 ### Example
-
-
+The first request gives you 10 UUIDs, the second 125. 
+    CouchDB.newUuids(10);
+    CouchDB.newUuids(125, 60);
+The uuids_cache now contains 160 UUIDs.
 
 
 ## .maybeThrowError()
@@ -216,7 +213,6 @@ A string with the keys and values separated by "=" and "&" or an empty string wh
     CouchDB.params({"key":"value", "key2":"value2"})
 returns
     "key=value&key2=value2"
-
 
 
 
