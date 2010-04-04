@@ -52,3 +52,17 @@ The db is deleted.
 ### Returns
 {"ok" : true}
 
+
+## .ensureFullCommit()
+
+### db.ensureFullCommit()
+
+### Description
+Does a POST request to the db and "_ensure_full_commit"
+  
+### Results
+Tells the db to do an fsync (write data to disk immediately).
+
+### Returns
+{"ok" : true} and the start time of the db instance.
+
