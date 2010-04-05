@@ -21,7 +21,7 @@ You can "signup" like this:
 ### CouchDB.login("username", "secretpassword")
 
 ### Description
-Does a POST request on "_session" with the user details.
+Does a POST request to "_session" with the user details.
 
 ### Results
 A created [session](/session) with the user name and roles.
@@ -38,7 +38,7 @@ A user doc [prepareUserDoc](/prepareUserDoc), saved in an [authentication db](/s
 ### CouchDB.logout()
 
 ### Description
-Does a DELETE request on "_session".
+Does a DELETE request to "_session".
 
 ### Results
 The [session's](/session) user name is set to null and the custom role is removed from the roles array.
@@ -55,7 +55,7 @@ A user [session](/session), as created by [login](/login).
 ### CouchDB.session(options)
 
 ### Description
-Does a GET request on "_session". 
+Does a GET request to "_session". 
 
 ### Returns
     {"ok": true, "userCtx": {"name": "username", "roles": ["customrole"]}, "info": {"authentication_db": "_users", "authentication_handlers": ["oauth", "cookie", "default"], "authenticated": "cookie"}}
@@ -88,7 +88,7 @@ A user [session](/session), as created by [login](/login).
 ### CouchDB.allDbs()
 
 ### Description
-Does a GET request on "_all_dbs". 
+Does a GET request to "_all_dbs". 
 
 ### Returns
 An array with all the databases.
@@ -99,7 +99,7 @@ An array with all the databases.
 ### CouchDB.getVersion()
 
 ### Description
-Does a GET request on "/". 
+Does a GET request to "/". 
 
 ### Returns
 The version of the CouchDB installation.
@@ -156,7 +156,7 @@ A new XMLHTTPRequest with readyState 4.
 ### CouchDB.requestStats(module, key, test)
 
 ### Description
-Does a GET request on "/_stats/module/key".
+Does a GET request to "/_stats/module/key".
 
 ### Returns
 Statistics about the specified module and key.
