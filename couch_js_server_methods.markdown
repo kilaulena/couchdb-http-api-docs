@@ -89,7 +89,7 @@ When the last argument is not null, "?flush=true" is appended to the request.
 ### CouchDB.newUuids(amount, buffer)
 
 ### Description
-The CouchDB.uuids_cache is filled with as many UUIDs as specified in the buffer parameter, or with 100. The next time newUuids is called, they aren't requested from CouchDB, but taken directly from this cache, when the cache contains enough of them. 
+The CouchDB.uuids_cache is filled with as many UUIDs as specified in the buffer parameter, or with 100. The next time newUuids is called, they aren't requested from CouchDB, but taken directly from this cache if the cache contains enough of them. 
   
 ### Returns
 An array with the specified amount of UUIDs.
@@ -130,4 +130,5 @@ A string with the keys and values separated by "=" and "&" or an empty string wh
     CouchDB.params({"key":"value", "key2":"value2"})
 returns
     "key=value&key2=value2"
+
 

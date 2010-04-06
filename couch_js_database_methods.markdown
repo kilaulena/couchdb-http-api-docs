@@ -98,7 +98,7 @@ The result can be specified more by querying only for single keys.
 The total number of rows and an array of rows, each row containing one result of the query, or null when the view doesn't exist.
 
 ### Example
-    db.view('spec_db/viewname', {"descending":"true", "startkey":"456"})
+    db.view('spec_db/viewname', {"include_docs":"true"}, ["456"])
 
 
 ## .info()
@@ -144,9 +144,9 @@ The last sequence and an array with results. Each result contains the ID and seq
     
     
 
-## .changes()
+## .compact()
 
-### db.changes()
+### db.compact()
 
 ### Description
 Does a POST request to the db and "_compact". Compacts the db.
@@ -193,7 +193,7 @@ The db property is set to the specified value.
 Does a GET request to the db and the propId.
   
 ### Returns
-The property ID and the property value.
+The property value.
     
 ### Example
     db.getDbProperty("_revs_limit")

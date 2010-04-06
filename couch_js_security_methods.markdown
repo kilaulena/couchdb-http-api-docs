@@ -61,7 +61,7 @@ Does a GET request to "_session".
     {"ok": true, "userCtx": {"name": "username", "roles": ["customrole"]}, "info": {"authentication_db": "_users", "authentication_handlers": ["oauth", "cookie", "default"], "authenticated": "cookie"}}
 
 ### Prerequisites
-A user [session](/session), as created by [login](/login).
+A user [session](/session), as created by [login](/login). When there is no session, userCtx.name is null.
 
 
 ## .prepareUserDoc()
